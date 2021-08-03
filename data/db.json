@@ -1,18 +1,6 @@
 {
   "projects": [
     {
-      "id": 1,
-      "title": "Create new homepage banner real time",
-      "details": "Lorem ipsum 1",
-      "complete": true
-    },
-    {
-      "id": 2,
-      "title": "Make marketing email",
-      "details": "Lorem ipsum 2",
-      "complete": false
-    },
-    {
       "id": 3,
       "title": "buy a laptop legion",
       "details": "get a new laptop i7",
@@ -21,20 +9,8 @@
     {
       "title": "make cake",
       "details": "make pastry",
-      "complete": false,
+      "complete": true,
       "id": 4
-    },
-    {
-      "title": "set new",
-      "details": "test 1\ntest ++",
-      "complete": true,
-      "id": 6
-    },
-    {
-      "title": "con cak",
-      "details": "cak con",
-      "complete": true,
-      "id": 7
     }
   ]
 }

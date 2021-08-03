@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            title: "",
-            details: "",
+            title: '',
+            details: '',
         };
     },
     methods: {
@@ -25,13 +27,16 @@ export default {
                 // json server tự động cập nhật id
             };
 
-            fetch("http://localhost:3000/projects", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(project),
-            })
-                .then(() => {
-                    this.$router.push("/");
+            axios
+                .post('http://localhost:3000/projects', {
+                    title: this.title,
+                    details: this.details,
+                })
+                .then((res) => {
+                    //res.data = project; ko can
+                    console.log(res.data);
+                    console.log(project);
+                    this.$router.push('/');
                 })
                 .catch((err) => console.log(err));
         },

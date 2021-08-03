@@ -10,23 +10,27 @@
 </template>
 
 <script>
-import SingleProject from "../components/SingleProject.vue";
-import FilterNav from "../components/FilterNav.vue";
+import axios from 'axios';
+
+import SingleProject from '../components/SingleProject.vue';
+import FilterNav from '../components/FilterNav.vue';
 
 export default {
-    name: "Home",
+    name: 'Home',
     components: { SingleProject, FilterNav },
     data() {
         return {
             projects: [],
-            current: "all",
+            current: 'all',
         };
     },
     mounted() {
-        fetch("http://localhost:3000/projects")
-            .then((res) => res.json())
-            .then((data) => (this.projects = data))
-            .catch((err) => console.log(err));
+        axios
+            .get('http://localhost:3000/projects')
+            //.then((res) => res.json())
+            //.catch((err) => console.log(err));
+            .then((res) => (this.projects = res.data))
+            .catch((err) => console.error(err));
     },
     methods: {
         handleDelete(id) {
@@ -43,10 +47,10 @@ export default {
     },
     computed: {
         filteredProjects() {
-            if (this.current === "completed") {
+            if (this.current === 'completed') {
                 return this.projects.filter((project) => project.complete);
             }
-            if (this.current === "ongoing") {
+            if (this.current === 'ongoing') {
                 return this.projects.filter((project) => !project.complete);
             }
             return this.projects;

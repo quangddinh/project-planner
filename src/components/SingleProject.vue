@@ -17,28 +17,29 @@
 </template>
 
 <script>
+
 export default {
-    props: ["project"],
+    props: ['project'],
     data() {
         return {
             showDetails: false,
-            uri: "http://localhost:3000/projects/" + this.project.id,
+            uri: 'http://localhost:3000/projects/' + this.project.id,
         };
     },
     methods: {
         deleteProject() {
-            fetch(this.uri, { method: "DELETE" })
-                .then(() => this.$emit("delete", this.project.id))
+            fetch(this.uri, { method: 'DELETE' })
+                .then(() => this.$emit('delete', this.project.id))
                 .catch((err) => console.log(err));
         },
         toggleComplete() {
             fetch(this.uri, {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ complete: !this.project.complete }),
             })
                 .then(() => {
-                    this.$emit("complete", this.project.id);
+                    this.$emit('complete', this.project.id);
                 })
                 .catch((err) => console.log(err));
         },
